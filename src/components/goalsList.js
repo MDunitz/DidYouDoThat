@@ -36,10 +36,9 @@ class GoalsList extends Component {
   }
 }
 
-//connecting GoalsList component to the actionCreators?
-//TODO ask ahmed to explain this to you/google what exactly it is doing
+//connecting GoalsList (react) component to the redux store (state)-doesnt modify the component class passed, returns a new connected component class
 function mapStateToProps(state){
-  return {goals:state.goals.all};
+  return {goals: state.goals.all};
 }
 //this gives us accesss to this.props.fetchGoals
 export default connect(mapStateToProps, {fetchGoals})(GoalsList);

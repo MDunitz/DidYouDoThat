@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { CREATE_GOAL } from './types';
+import { FETCH_GOALS } from './types';
 
-export const CREATE_GOAL = 'CREATE_GOAL';
-export const FETCH_GOALS = 'FETCH_GOALS';
-
-const ROOT_URL = //TODO need end point for database post/get requests
+//TODO need end point for database post/get requests
+//const ROOT_URL = 
 
 export function createGoal(props){
   const request = axios.post(`${ROOT_URL}/goals`, props);

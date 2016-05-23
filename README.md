@@ -23,3 +23,12 @@ Click [here](https://github.com/StephenGrider/ReactStarter/releases) then downlo
 	> npm install
 	> npm start
 ```
+###Run tests
+```
+>npm run test
+```
+
+###Run tests automatically with easch file change
+```
+>npm run test:watch
+```
