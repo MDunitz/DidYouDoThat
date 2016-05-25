@@ -2,8 +2,6 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 require 'data_mapper'
-require 'sinatra/flash'
-require 'sinatra/redirect_with_flash'
 require 'json'
 
 enable :sessions
