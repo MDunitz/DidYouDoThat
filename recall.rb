@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'bundler/setup'
 require 'sinatra'
 require 'data_mapper'
 require 'sinatra/flash'
@@ -28,26 +29,32 @@ end
 
 get '/api' do
   @notes = Note.all :order => :id.desc
-  @title = 'All Notes'
   content_type :json
-  { :data => @notes, :title => @title }.to_json
+  { :data => @notes}.to_json
 end
 
 get '/' do 
   send_file File.join(settings.public_folder, 'index.html')
 end
 
-post '/' do 
+post '/api' do 
   n = Note.new
   n.content = params[:content]
+  puts "Hey here is the post request"
+  @parsed_request = JSON.parse(request.body.read)
+  puts @parsed_request
+  puts "ok now lets try to get the keys"
+  puts @parsed_request['data']
+  n.content = @parsed_request['data']
   n.created_at = Time.now
   n.updated_at = Time.now
   if n.save
+    puts "hey the save of n #{n} worked!"
     content_type :json
-    { :data => @notes, :title => @title }.to_json
+    { :data => Note.all}.to_json
   else
     content_type :json
-    { :data => @notes, :title => @title }.to_json
+    { :data => Note.all}.to_json
   end
 end
 
