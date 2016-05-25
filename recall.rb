@@ -27,6 +27,7 @@ end
 
 get '/api' do
   @notes = Note.all :order => :id.desc
+  puts "were sending back #{@notes}"
   content_type :json
   { :data => @notes}.to_json
 end
