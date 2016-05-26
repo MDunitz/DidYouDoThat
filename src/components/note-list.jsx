@@ -15,17 +15,19 @@ class NoteList extends Component {
     console.log('we shuld not trigger get notes');
     return this.props.notes.map((note) => {
       return (
-        <li 
+        <article 
         key={note.id} 
         className="list-group-item">
+          
           <p>ID {note.id}</p>
-          <p>TODO: {note.content}</p>
           <p>Created At: {note.created_at}</p>
           <p>Updated At:{note.updated_at}</p>
-          <p>Complete: {note.complete}</p>
-        </li>
-      )
-    })
+          <form action="/{note.id}" method="post" id="edit">
+            <input type="text" value={note.content} readOnly={true}></input>
+          </form>
+        </article>
+      );
+    });
   }
 
   render() {
@@ -35,7 +37,6 @@ class NoteList extends Component {
       </ul>
     )
   }
-
 }
 
 function mapStateToProps(state) {
@@ -44,14 +45,8 @@ function mapStateToProps(state) {
   };
 }
 
-//anything return from this function will end up as props
-//on the BookList contianer --we need to
 function mapDispatchToProps(dispatch) {
-  //whenever selelctBook is called, the result should
-  //be passed to al of our reducers
   return bindActionCreators( {getNotes: getNotes}, dispatch);
 }
 
-//promote Booklist from a component to a container, it needs to know abou thtis new disptach method, selectBook, make it 
-//available as a prop
 export default connect(mapStateToProps, mapDispatchToProps)(NoteList);

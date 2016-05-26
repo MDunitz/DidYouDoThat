@@ -49,19 +49,35 @@ post '/api' do
   n.updated_at = Time.now
   if n.save
     puts "hey the save of n #{n} worked!"
+    @notes = Note.all :order => :id.desc
     content_type :json
-    { :data => Note.all}.to_json
+    { :data => @notes}.to_json
   else
+    @notes = Note.all :order => :id.desc
     content_type :json
-    { :data => Note.all}.to_json
+    { :data => @notes}.to_json
   end
 end
 
+post '/:id' do
+  n = Note.get params[:id]
+  unless n
+    content_type :json
+    { :data => []}.to_json
+  end
 
-
-
-
-
-
-
-
+  n.attributes = {
+    :content => JSON.parse(request.body.read),
+    :updated_at => Time.now
+  }
+  if n.save
+    puts "Saved successfully"
+    @notes = Note.all :order => :id.desc
+    content_type :json
+    { :data => @notes}.to_json
+  else    
+    puts "Sorry was unable to save"
+    content_type :json
+    { :data => []}.to_json
+  end
+end
