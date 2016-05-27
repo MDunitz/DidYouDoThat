@@ -9,11 +9,15 @@ export default class App extends Component {
     return (
       <div>
       Did You Do it?
-      {this.props.children}
-        <div>React simple starter</div>
-        <NewNote />
-        <NoteList />
       </div>
     );
   }
 }
+
+
+
+
+//       {this.props.children}
+//         <div>React simple starter</div>
+//         <NewNote />
+//         <NoteList />

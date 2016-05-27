@@ -10,7 +10,7 @@ import ReduxPromise from 'redux-promise';
 
 import App from './components/app';
 import reducers from './reducers';
-import routes from './routes';
+
 import promise from 'redux-promise';
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f;
@@ -21,6 +21,6 @@ const createStoreWithMiddleware = compose(applyMiddleware(promise), devTools)(cr
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <Router history = {browserHistory} routes ={routes} />
+   <App />
   </Provider>
   , document.querySelector('.container'));

@@ -1,10 +1,8 @@
 
 import axios from 'axios';
-import { CREATE_GOAL } from './types';
-import { FETCH_GOALS } from './types';
+import { CREATE_GOAL, FETCH_GOALS, FIRST_ACTION  } from './types';
 
-//TODO need end point for database post/get requests
-//const ROOT_URL = 
+const ROOT_URL = 'http://localhost:4567/api';
 
 export function createGoal(props){
   const request = axios.post(`${ROOT_URL}/goals`, props);
@@ -20,13 +18,13 @@ export function fetchGoals(){
     type: FETCH_GOALS,
     payload: request
   }
+}
 
-export const FIRST_ACTION = 'NOTES';
+
 
 export function getNotes(notes){
   console.log('get notes has been triggered');
-  let url = 'http://localhost:4567/api';
-  let request = axios.get(url);
+  let request = axios.get(`${ROOT_URL}`);
   return {
     type: FIRST_ACTION,
     payload: request
@@ -35,11 +33,10 @@ export function getNotes(notes){
 
 export function newNote(content) {
   console.log('new notes has been trigged');
-  let url = 'http://localhost:4567/api';
   let reqObj = {
     data: content
   }
-  let request = axios.post(url,reqObj);
+  let request = axios.post(`${ROOT_URL}`,reqObj);
   return {
     type: FIRST_ACTION,
     payload: request
