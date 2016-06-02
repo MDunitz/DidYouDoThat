@@ -8,14 +8,19 @@ class GoalsList extends Component {
   componentWillMount(){
     this.props.fetchGoals();
   }
+  // renderGoals(){
+  //   return this.props.goals
+  //   .map((goal)=>{
+  //     return(
+  //       <li className="list-group-item" key={goal.id}>
+  //         <strong>{goal.title}</strong>
+  //       </li>
+  //     );
+  //   });
+  // }
+
   renderGoals(){
-    return this.props.goals.map((goal)=>{
-      return(
-        <li className="list-group-item" key={goal.id}>
-          <strong>{goal.title}</strong>
-        </li>
-      );
-    });
+    return this.props.goals
   }
 
   render(){
@@ -24,7 +29,7 @@ class GoalsList extends Component {
       <div>
         <div className="text-xs-right">
           <Link to="goals/new" className="btn btn-primary">
-          Add a goal
+          Add a goal!
           </Link>
         </div>
         <h3>Goals</h3>
@@ -38,7 +43,7 @@ class GoalsList extends Component {
 
 //connecting GoalsList (react) component to the redux store (state)-doesnt modify the component class passed, returns a new connected component class
 function mapStateToProps(state){
-  return {goals: state.goals.all};
+  return {goals: state.goals};
 }
 //this gives us accesss to this.props.fetchGoals
 export default connect(mapStateToProps, {fetchGoals})(GoalsList);
