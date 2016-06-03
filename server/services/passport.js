@@ -10,23 +10,25 @@ const config = require('../../config');
 
 //create local strategy
 const localOptions = { usernameField: 'email' } //tells local options to look at email property of request to get username
-const localLogin = new LocalStrategy(localOptions, function(err, user){
-  if(err){
-    console.log('problem connecting to database', err);
-    return done(err);
-  }
-  if(!user){
-    console.log('email/password is incorrect');
-    return done(null, false);
-  }
-  user.comparePassword(password, function(err, isMatch){
+const localLogin = new LocalStrategy(localOptions, function(email, password, done){
+  User.findOne({ email: email }, function(err, user){
     if(err){
-      console.log('error comparing passwords', err);
+      console.log('problem connecting to database', err);
       return done(err);
     }
-    if(!isMatch){ return done(null, false); }
+    if(!user){
+      console.log('email/password is incorrect');
+      return done(null, false);
+    }
+    user.comparePassword(password, function(err, isMatch){
+      if(err){
+        console.log('error comparing passwords', err);
+        return done(err);
+      }
+      if(!isMatch){ return done(null, false); }
 
-    return done(null, user);
+      return done(null, user);
+    });
   });
 });
 

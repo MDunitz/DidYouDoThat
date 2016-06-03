@@ -46,6 +46,7 @@ exports.signup = function(req, res, next){
         return next(err);
       }
       //send back token for user to store/use in authenticated requests
+      console.log('saved it')
       res.json({ token: tokenForUser(user) });
     });
   });
