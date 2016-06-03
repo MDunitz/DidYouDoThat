@@ -30,11 +30,19 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
 
+router(app);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
 //Server setup
-const port = process.env.PORT || 3090;
+const port = 3090;
 const server = http.createServer(app);
-server.listen(port);
-console.log('Server listening on port ', port);
-console.log('check out the app at http://localhost:', port);
+server.listen(port, function(){
+  console.log("I'm listening at port", port);
+});
+// console.log('Server listening on port ', port);
+// console.log('check out the app at http://localhost:', port);
 
 
