@@ -5,13 +5,14 @@ const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
 
 //define model
-cost userSchema = new Schema({
+const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   password: String
 });
 
 //before saving, encrypt password
 userSchema.pre('save', function(next){
+  console.log('saving password');
   const user = this;
   bcrypt.genSalt(10, function(err, salt){
     if(err) {
@@ -30,6 +31,7 @@ userSchema.pre('save', function(next){
 });
 
 userSchema.methods.comparePassword = function (candidatePassword, callback){
+  console.log('comparing password');
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
     if(err){
       console.log('error in comparePassword', err);

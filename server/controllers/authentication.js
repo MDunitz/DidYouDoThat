@@ -1,7 +1,7 @@
 const jwt = require('jwt-simple');
 
 const User = require('../models/user');
-const config = require('../config');
+const config = require('../../config');
 
 //create a token
 function tokenForUser(user){
@@ -12,11 +12,13 @@ function tokenForUser(user){
 
 //signin route
 exports.signin = function(req, res, next){
+  console.log('in signin');
   res.send({ token: tokenForUser(req.user) });
 }
 
 //process/respond to signup request
 exports.signup = function(req, res, next){
+  console.log('in signup');
   const email = req.body.email;
   const password = req.body.password;
 

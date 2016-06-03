@@ -11,9 +11,9 @@ module.exports = function(app){
     res.send({ message: 'super secret code!' });
   });
 
-  app.post('signin', requireSignin, Authentication.signin);
+  app.post('/signin', requireSignin, Authentication.signin);
 
-  app.post('signup', Authentication.signup);
+  app.post('/signup', Authentication.signup);
 
 
 }
