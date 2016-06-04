@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS users CASCADE;
+    
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  UserName VARCHAR(100),
+  hashedPass VARCHAR(250),
+  email VARCHAR(250) UNIQUE,
+  token VARCHAR(500)
+);
+
+
+DROP TABLE IF EXISTS tasks CASCADE;
+    
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  TaskName VARCHAR(250),
+  userID INTEGER NULL DEFAULT NULL,
+  timesPerWeek INTEGER,
+  FOREIGN KEY(userID) REFERENCES users(id)
+);
+
+
+DROP TABLE IF EXISTS taskData CASCADE;
+    
+CREATE TABLE taskData (
+  id SERIAL PRIMARY KEY,
+  taskID INTEGER,
+  userID INTEGER,
+  currDate DATE,
+  Done BOOLEAN,
+  otherInfo VARCHAR(250),
+  FOREIGN KEY (taskID) REFERENCES tasks(id),
+  FOREIGN KEY (userID) REFERENCES users(id)
+);
