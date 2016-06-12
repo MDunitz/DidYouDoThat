@@ -7,7 +7,9 @@ const Schema = mongoose.Schema;
 //define model
 const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
-  password: String
+  password: String,
+  goal: String,
+  perWeek: Number
 });
 
 //before saving, encrypt password

@@ -43,7 +43,6 @@ const server = http.createServer(app);
 server.listen(port, function(){
   console.log("I'm listening at port", port);
 });
-// console.log('Server listening on port ', port);
-// console.log('check out the app at http://localhost:', port);
+
 
 

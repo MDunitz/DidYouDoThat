@@ -11,7 +11,7 @@ import App from './components/app';
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
-import Feature from './components/features';
+import AddNewGoal from './components/features';
 import RequireAuth from './components/auth/require_auth';
 import reducers from './reducers';
 //import routes from './routes';
@@ -39,7 +39,7 @@ ReactDOM.render(
         <Route path="signin" component={Signin} />
         <Route path="signout" component={Signout} />
         <Route path="signup" component={Signup} />
-        <Route path="feature" component={RequireAuth(Feature)} />
+        <Route path="feature" component={RequireAuth(AddNewGoal)} />
       </Route>
     </Router>
   </Provider>

@@ -52,6 +52,14 @@ exports.signup = function(req, res, next){
   });
 }
 
+//TODO refactor into goals controller
+//add a newgoal
+exports.newGoal = function(req, res, next){
+  console.log('adding a goal')
+  const goal = req.body.goal;
+  const perWeek = req.body.perWeek;
+  res.send({blrgh: 'blrgh'})
+}
 
 
 

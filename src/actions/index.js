@@ -73,6 +73,7 @@ export function fetchMessage(){
 }
 
 export function createGoal(props){
+  console.log('creating a goal?', props)
   const request = axios.post(`${ROOT_URL}/goals`, props);
   return {
     type: CREATE_GOAL,
