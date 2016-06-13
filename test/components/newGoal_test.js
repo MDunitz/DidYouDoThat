@@ -1,5 +1,5 @@
 import { renderComponent , expect } from '../test_helper';
-import AddGoalBox from '../../src/components/featurs';
+import AddGoalBox from '../../src/components/features';
 
 describe('AddGoalBox Component', () =>{
   let component;
