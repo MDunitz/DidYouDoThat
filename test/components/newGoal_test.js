@@ -23,11 +23,11 @@ describe('AddGoalBox Component', () =>{
 
   describe('entering a goal', ()=>{
     beforeEach(()=>{
-      component.find('textarea').simulate('change', 'new Goal');
+      component.find('textarea').simulate('change', 'new Goal', 7);
     });
 
     it('shows the correct text in the text area', ()=>{
-      expect(component.find('textarea')).to.have.value('new Goal');
+      expect(component.find('textarea')).to.have.value('new Goal', 7);
     })
 
     it('when submitted, clears the input', () =>{

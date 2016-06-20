@@ -55,11 +55,39 @@ exports.signup = function(req, res, next){
 //TODO refactor into goals controller
 //add a newgoal
 exports.newGoal = function(req, res, next){
-  console.log('adding a goal')
+  console.log('adding a goal');
   const goal = req.body.goal;
   const perWeek = req.body.perWeek;
+  const email = req.body.email;
+  if(!goal || !perWeek){
+    return res.status(422).send({error: 'you must provide a goal and a number/week' });
+  }
+  User.findOne({email}), function(err, existingUser){
+    if(err){
+      console.log('connection to the database error', err);
+      return next(err);
+    }
+    if(existingUser){
+      //TODO-create goals schema?
+      goals.save(function(err){
+        if(err){
+          console.log('err saving goal to database', err);
+          return next(err);
+        }
+        console.log('saved it');
+        //TODO return goal id
+        res.json({ goalId })
+      });
+    }
+  }
+  console.log({goal, perWeek});
   res.send({blrgh: 'blrgh'})
 }
 
+exports.getGoals = function(req, res, next){
+  console.log('getting the goals');
+  
+
+}
 
 

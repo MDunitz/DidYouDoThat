@@ -5,23 +5,21 @@ const morgan = require('morgan');
 const app = express();
 const cors = require('cors');
 const Promise = require('bluebird');
-
-const config = require('../config')
-
-
 const router = express.Router();
 
 
+require('./middleware.js')(app, express);
 
 
-app.use(morgan('dev'));
-app.use(cors());
-app.use(bodyParser.json({type: '*/*'}));
-
-router
-
-var port = process.env.PORT || 3000;
+var port = 3000;
 app.get('/', function(req, res) {
+  console.log('blahabhbha')
   res.send('hello world');
 });
-app.listen(port)
+app.listen(port, function(){
+  console.log('listening somewhere lols');
+});
+
+module.exports = app;
+
+

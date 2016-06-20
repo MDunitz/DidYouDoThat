@@ -26,19 +26,19 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
         return done(err);
       }
       if(!isMatch){ return done(null, false); }
-
+      //returning a token
       return done(null, user);
     });
   });
 });
 
-//tell jwt where to look for info in request and where to get secret
+//tell jwt where to look for token in request and where to get secret to decode
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: config.secret
 };
 
-//create jwt strategy-authenticate endpoints using json web token
+//create jwt strategy-authenticate endpoints using json web token, payload is userID and timestamp (decoded token)->have the user id already
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
   User.findById(payload.sub, function(err, user){
     if(err){

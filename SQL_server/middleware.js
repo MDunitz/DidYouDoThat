@@ -1,9 +1,23 @@
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const path = require('path');
-
-module.exports = function(app, express){
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var path = require('path');
   
+var taskRoutes = require('./tasks/tasksRoutes.js');
+module.exports = function(app, express){
+  var taskRouter = express.Router();
+  //TODO add in other routers
+
+  app.use(morgan('dev'));
+  app.use(bodyParser.json({type: '*/*'}));
+  //what does urlencoded do? --look up
+  app.use(bodyParser.urlencoded({extended:true}));
+  //not sure if this line is necessary, possibly only for production
+  app.use('/scripts', express.static(__dirname + './../../node_modules/'));
+  
+  //TODO add other routers amd refactor to use multiple Routers?
+  require('./tasks/tasksRoutes.js')(app);
+  require('./taskData/taskDataRoutes.js')(app);
+  require('./users/userRoutes.js')(app);
 }
 
 

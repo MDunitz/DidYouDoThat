@@ -23,7 +23,9 @@ const router = require('./router');
 
 //connect mongoose to this instance of mongodb 
   //this creates a new db inside of mongodb called DidYouAuth
-  mongoose.connect('mongodb://localhost:auth/DidYouAuth');
+  mongoose.connect('mongodb://localhost:auth/DidYouAuth2', function(){
+    //mongoose.connection.db.dropDatabase();
+  });
 
 
 //App setup

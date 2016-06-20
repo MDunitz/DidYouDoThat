@@ -44,11 +44,11 @@ class AddGoalBox extends Component{
     return(
       <form onSubmit={this.handleSubmit.bind(this)} className="comment-box">
         <h4>Add a Goal!</h4>
-        <textarea
+        <textarea className="newGoal"
           value={this.state.newGoal}
           onChange={this.handleGoalChange.bind(this)} />
         <h3>How many times per week?</h3>
-        <textarea
+        <textarea className='perWeek'
           value={this.state.perWeek}
           onChange={this.handleNumberChange.bind(this)} />
         <div>

@@ -8,12 +8,12 @@ export default function(ComposedComponent){
     static contextTypes = {
       router: React.PropTypes.object
     }
-
+    //check if they are authenticated before mounting component-if not send to '/'
     componentWillMount(){
       if(!this.props.authenticated)
       this.context.router.push('/')
     }
-
+    //check if they are authenticated when updating component-if not send to '/'
     componentWillUpdate(nextProps){
       if(!nextProps.authenticated){
         this.context.router.push('/');

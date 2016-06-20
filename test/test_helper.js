@@ -11,7 +11,7 @@ import reducers from '../src/reducers';
 
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
-//not sure what this is doing-not used in SG boilerplate, but w/o it tests wont run (ReferenceError: navigator is not defined)
+//not sure what this is doing-not used in SG boilerplate, but w/o it tests wont run (ReferenceError: navigator is not defined3)
 global.navigator = {
   userAgent: 'node.js'
 };
