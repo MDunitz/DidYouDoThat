@@ -37,6 +37,7 @@ module.exports = {
         });
         query.on('end', function(){
           done();
+          console.log('results', results);
           return res.json(results);
         });
       });
@@ -49,7 +50,7 @@ module.exports = {
     var data = { 
       goal : req.body.newGoal,
       perWeek : req.body.perWeek,
-      userID : req.body.userID
+      userId : 1
     };
 
     // Get a Postgres client from the connection pool
@@ -63,22 +64,23 @@ module.exports = {
       }
 
 
-      client.query('INSERT INTO tasks(taskname, userid, timesperweek) values($1 $2, $3);', [data.goal, data.perWeek, data.userID]);
+      client.query('INSERT INTO tasks(taskname, userid, timesperweek) values(${data.goal}, ${data.perWeek}, ${data.userId});');
 
-      var query = client.query('SELECT * FROM tasks WHERE userid=${userID};', {userID}, function(err, results){ 
+      // var query = client.query('SELECT * FROM tasks WHERE userid=${userID};', {userID}, function(err, results){ 
 
-        if(err){
-          done();
-          console.log('err selecting', err);
-        }
-        query.on('row', function(row){
-          results.push(row);
-        });
-        query.on('end', function(){
-          done();
-          return res.json(results);
-        });
-      });
+      //   if(err){
+      //     done();
+      //     console.log('err selecting', err);
+      //   }
+      //   query.on('row', function(row){
+      //     results.push(row);
+      //   });
+      //   query.on('end', function(){
+      //     done();
+      //     return res.json(results);
+      //   });
+      // });
+      return res.status(200);
     });
   },
 

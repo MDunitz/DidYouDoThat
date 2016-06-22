@@ -8,6 +8,10 @@ const Promise = require('bluebird');
 const router = express.Router();
 
 
+
+app.use(morgan('combined'));
+app.use(cors());
+app.use(bodyParser.json({type: '*/*'}));
 require('./middleware.js')(app, express);
 
 

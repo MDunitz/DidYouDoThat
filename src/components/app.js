@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import AddNewGoal from './features';
+// import AddNewGoal from './features';
 
 import Header from './header';
 
@@ -11,6 +11,7 @@ export default class App extends Component {
       <Header />
       {this.props.children}
       </div>
+
     );
   }
 }

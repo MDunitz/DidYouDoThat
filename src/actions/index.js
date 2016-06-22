@@ -12,12 +12,13 @@ import {
 
 
 
-const ROOT_URL = 'http://localhost:3090'
+const ROOT_URL_SIGNIN = 'http://localhost:3090'
+const ROOT_URL_DB = 'http://localhost:3000'
 
 export function signinUser({email, password}){
 //call dispatch and pass in an action === calling that actions's action creator and returning a plain object as an action
   return function(dispatch){
-    axios.post(`${ROOT_URL}/signin`, { email, password })
+    axios.post(`${ROOT_URL_SIGNIN}/signin`, { email, password })
       .then(response => {
         //update state to indicate user is authenticated
         dispatch( { type: AUTH_USER });
@@ -35,7 +36,7 @@ export function signinUser({email, password}){
 
 export function signupUser({email, password}){
   return function(dispatch){
-    axios.post(`${ROOT_URL}/signup`, { email, password })
+    axios.post(`${ROOT_URL_SIGNIN}/signup`, { email, password })
     .then(response => {
       dispatch({ type: AUTH_USER});
       localStorage.setItem('token', response.data.token);
@@ -61,7 +62,7 @@ export function signoutUser(){
 //TODO refactor out
 export function fetchMessage(){
   return function(dispatch){
-    axios.get(ROOT_URL, { //second argument to axios is the options object, can pass in headers
+    axios.get(ROOT_URL_DB, { //second argument to axios is the options object, can pass in headers
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
@@ -75,7 +76,7 @@ export function fetchMessage(){
 
 export function createGoal(props){
   console.log('creating a goal?', props)
-  const request = axios.post(`${ROOT_URL}/goals`, props);
+  const request = axios.post(`${ROOT_URL_DB}/goals`, props);
   return {
     type: CREATE_GOAL,
     payload: request
@@ -83,11 +84,14 @@ export function createGoal(props){
 }
 
 export function fetchGoals(){
-  const request = axios.post(`${ROOT_URL}/goals`);
+  //TODO add userID
+  console.log('fetching goals')
+  const request = axios.get(`${ROOT_URL_DB}/goals`);
   return { 
     type: FETCH_GOALS,
     payload: request
-  }
+  };
+}
 
 // export const FIRST_ACTION = 'NOTES';
 
@@ -112,7 +116,7 @@ export function fetchGoals(){
 //     type: FIRST_ACTION,
 //     payload: request
 //   };
-}
+
 
 
 
