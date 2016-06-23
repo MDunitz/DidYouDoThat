@@ -30,7 +30,7 @@
     "axios": "^0.11.0",
     "babel-preset-stage-1": "^6.1.18",
     "bcrypt-nodejs": "0.0.3",
-    "bluebird": "^3.4.0",
+    "bluebird": "^3.4.1",
     "body-parser": "^1.15.1",
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",

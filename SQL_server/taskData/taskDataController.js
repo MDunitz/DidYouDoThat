@@ -1,6 +1,8 @@
 const connectionString = 'postgres://@localhost:5432/bullet';
 const pg = require('pg');
 const pgp =require('pg-promise')(/*/options*/);
+//import {connectDB, recieveData} from './../helpers';
+
 
 module.exports = {
   taskDataGetOne: function(req, res){

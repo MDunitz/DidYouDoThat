@@ -16,10 +16,10 @@ require('./middleware.js')(app, express);
 
 
 var port = 3000;
-app.get('/', function(req, res) {
-  console.log('blahabhbha')
-  res.send('hello world');
-});
+// app.get('/', function(req, res) {
+//   console.log('blahabhbha')
+//   res.send('hello world');
+// });
 app.listen(port, function(){
   console.log('listening somewhere lols');
 });

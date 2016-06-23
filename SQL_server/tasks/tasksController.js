@@ -63,8 +63,8 @@ module.exports = {
         return res.status(500).json({ success: false, data: err});
       }
 
-
-      client.query('INSERT INTO tasks(taskname, userid, timesperweek) values(${data.goal}, ${data.perWeek}, ${data.userId});');
+      console.log('trying to insert into db', data)
+      client.query('INSERT INTO tasks(taskname, userid, timesperweek) values($1, $2, $3);', [data.goal, data.userId, data.perWeek]);
 
       // var query = client.query('SELECT * FROM tasks WHERE userid=${userID};', {userID}, function(err, results){ 
 
@@ -80,7 +80,8 @@ module.exports = {
       //     return res.json(results);
       //   });
       // });
-      return res.status(200);
+      //done();
+      return res.json('good job');
     });
   },
 

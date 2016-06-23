@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
-
+var Promise = require('bluebird');
 // class Feature extends Component {
 //   comonentWillMount(){
 //     this.props.fetchMessage();
@@ -20,6 +20,10 @@ import { connect } from 'react-redux';
 // export default connect(mapStateToProps, actions)(Feature);
 
 class AddGoalBox extends Component{
+  static contextTypes={
+    router: PropTypes.object
+  };
+
   constructor(props){
     super(props);
     this.state = {newGoal: '', perWeek:''}
@@ -35,9 +39,12 @@ class AddGoalBox extends Component{
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.createGoal({newGoal: this.state.newGoal, perWeek: this.state.perWeek});
-    this.setState({newGoal: '', perWeek:''});
-    //TODO redirect to goalsList
+    var that = this;
+    this.props.createGoal({newGoal: this.state.newGoal, perWeek: this.state.perWeek})
+    .then(function(v){
+      that.setState({newGoal: '', perWeek:''});
+      that.context.router.push('/goals');
+    });
   }
 
   render(){

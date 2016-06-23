@@ -39,8 +39,7 @@ class GoalsList extends Component {
   render(){
   
     return (
-      //TODO add route to add a goal
-      <div>
+      <div className='goalList'>
         <div className="text-xs-right">
           <Link to="feature" className="btn btn-primary">
           Add a goal!
