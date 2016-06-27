@@ -13,7 +13,7 @@ import {
 
 
 const ROOT_URL_SIGNIN = 'http://localhost:3090'
-const ROOT_URL_DB = 'http://localhost:3000'
+const ROOT_URL_DB = 'http://localhost:3000/api'
 
 export function signinUser({email, password}){
 //call dispatch and pass in an action === calling that actions's action creator and returning a plain object as an action

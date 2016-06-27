@@ -8,7 +8,7 @@ describe('goalsList component', () => {
     component=renderComponent(GoalsList);
   });
 
-  it('it has the correct class', ()=> {
+  it('has the correct class', ()=> {
     expect(component).to.have.class('goalList')
   });
 

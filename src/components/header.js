@@ -7,14 +7,25 @@ class Header extends Component {
   renderLinks(){
     if(this.props.authenticated){
       return (
-        <li className="nav-item">
-          <Link className="nav-link" to="/signout"> Sign Out </Link>
-        </li>
+        <div>
+          <li className="nav-item" key={1}>
+            <Link className="nav-link" to="/signout"> Sign Out </Link>
+          </li>
+          <li className="nav-item" key={2}>
+            <Link className="nav-link" to="/feature"> Add Goal</Link>
+          </li>
+          <li className="nav-item" key={3}>
+            <Link className="nav-link" to="/goals"> View Goals</Link>
+          </li>
+          <li className="nav-item" key={4}>
+            <Link className="nav-link" to="/dailyReview"> Daily Review</Link>
+          </li>
+        </div>
       )
     }else{
       return [
         <li className="nav-item" key={1}>
-          <Link className="nav-link" to="/signin"> Sign in </Link>
+          <Link className="nav-link" to="/signin"> Sign In </Link>
         </li>,
         <li className="nav-item" key={2}>
           <Link className="nav-link" to="/signup"> Sign Up </Link>
