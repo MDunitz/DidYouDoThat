@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import{ fetchGoals } from '../actions/index';
-import { bindActionCreators } from 'redux';
+//import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
 class GoalsList extends Component {

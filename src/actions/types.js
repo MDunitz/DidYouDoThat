@@ -6,3 +6,4 @@ export const AUTH_ERROR ='auth_error';
 export const FETCH_MESSAGE = 'fetch_message';
 export const CREATE_GOAL = 'CREATE_GOAL';
 export const FETCH_GOALS = 'FETCH_GOALS';
+export const DAILY_REVIEW ='DAILY_REVIEW';

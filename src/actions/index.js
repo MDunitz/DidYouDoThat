@@ -7,7 +7,8 @@ import {
   AUTH_USER, 
   AUTH_ERROR, 
   UNAUTH_USER, 
-  FETCH_MESSAGE 
+  FETCH_MESSAGE,
+  DAILY_REVIEW 
 } from './types';
 
 
@@ -85,12 +86,21 @@ export function createGoal(props){
 
 export function fetchGoals(){
   //TODO add userID
-  console.log('fetching goals')
+  console.log('fetching goals');
   const request = axios.get(`${ROOT_URL_DB}/goals`);
   return { 
     type: FETCH_GOALS,
     payload: request
   };
+}
+
+export function dailyReview(){
+  console.log('posting daily review data');
+  const request = axios.post(`${ROOT_URL_DB}/taskData`);
+  return{
+    type: DAILY_REVIEW,
+    payload: request
+  }
 }
 
 // export const FIRST_ACTION = 'NOTES';
