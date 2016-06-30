@@ -34,6 +34,18 @@ const pgp =require('pg-promise')(/*/options*/);
 
 // Stream results back one row at a time
 
+const dateHelper=function(){
+    var currDate = new Date();
+    var year = currDate.getFullYear().toString();
+    var month = currDate.getMonth() + 1;
+    if(month.toString().length===1){
+      month='0'+month.toString();
+    }
+    var day = currDate.getDate();
+    var date =`${year}-${month}-${day}`;
+    return date;
+  }
+
 
 const recieveData = function(err, results, query){
   // Handle Errors
@@ -52,7 +64,6 @@ const recieveData = function(err, results, query){
   }); 
 }
 
-
 const connectDB = function(query){
   pg.connect(connectionString, function(err, client, done){
     if(err){
@@ -64,4 +75,16 @@ const connectDB = function(query){
   })
 }
 
-module.exports= {connectDB: connectDB, recieveData: recieveData};
+module.exports= {
+  connectDB: connectDB, 
+  recieveData: recieveData, 
+  dateHelper: dateHelper
+};
+
+
+
+
+
+
+
+

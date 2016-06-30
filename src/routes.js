@@ -8,7 +8,7 @@ import Signout from './components/auth/signout';
 import AddNewGoal from './components/features';
 import RequireAuth from './components/auth/require_auth';
 import GoalsList from './components/goalsList';
-import DailyReview from './components/dailyReview';
+import DailyReviewList from './components/dailyReviewList';
 
 export default (
    <Route path="/" component={App}>
@@ -17,7 +17,7 @@ export default (
         <Route path="signup" component={Signup} />
         <Route path="feature" component={AddNewGoal} />
         <Route path="goals" component={GoalsList} />
-        <Route path="dailyReview" component={DailyReview} />
+        <Route path="dailyReview" component={DailyReviewList} />
       </Route>
 );
 

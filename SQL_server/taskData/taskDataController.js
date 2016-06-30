@@ -1,7 +1,7 @@
 const connectionString = 'postgres://@localhost:5432/bullet';
 const pg = require('pg');
 const pgp =require('pg-promise')(/*/options*/);
-//import {connectDB, recieveData} from './../helpers';
+const dateHelper = require('./../helpers');
 
 
 module.exports = {
@@ -61,9 +61,10 @@ module.exports = {
 
   taskDataPost: function(req, res){
     var results = [];
-    console.log('in taskDataPost in taskDataController');
+    console.log('in taskDataPost in taskDataController', req);
+    var date = dateHelper();
     var data = {
-      date : req.body.date,
+      date : date,
       done : req.body.done,
       otherInfo : req.body.otherInfo,
       userId : req.body.userId,
