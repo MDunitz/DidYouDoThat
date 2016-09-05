@@ -32,3 +32,22 @@ Click [here](https://github.com/StephenGrider/ReactStarter/releases) then downlo
 ```
 >npm run test:watch
 ```
+
+
+- Create Database (from command line)
+
+```
+createdb bullet
+```
+
+- Load Schema (from command line)
+
+```
+psql bullet < SQL_server/db/schema.sql
+```
+
+- Load MockDataSet (from command line)
+
+```
+psql bullet < SQL_server/db/mockData.sql
+```

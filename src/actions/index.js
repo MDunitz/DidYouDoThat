@@ -26,6 +26,7 @@ export function signinUser({email, password}){
         //save jwt to local storage
         localStorage.setItem('token', response.data.token);
         //TODO set route... redirect to route '/'
+        console.log('why you no work');
         browserHistory.push('/feature');
       })
       .catch((err)=>{
@@ -37,6 +38,7 @@ export function signinUser({email, password}){
 
 export function signupUser({email, password}){
   return function(dispatch){
+    console.log('signing up user', email, password, ROOT_URL_SIGNIN)
     axios.post(`${ROOT_URL_SIGNIN}/signup`, { email, password })
     .then(response => {
       dispatch({ type: AUTH_USER});

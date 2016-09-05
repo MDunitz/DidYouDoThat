@@ -30,5 +30,6 @@ CREATE TABLE taskData (
   Done BOOLEAN,
   otherInfo VARCHAR(250),
   FOREIGN KEY (taskID) REFERENCES tasks(id),
-  FOREIGN KEY (userID) REFERENCES users(id)
+  FOREIGN KEY (userID) REFERENCES users(id),
+  UNIQUE (taskID, userID, currDate)
 );

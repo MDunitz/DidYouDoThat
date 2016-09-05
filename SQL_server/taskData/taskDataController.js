@@ -1,7 +1,7 @@
 const connectionString = 'postgres://@localhost:5432/bullet';
 const pg = require('pg');
 const pgp =require('pg-promise')(/*/options*/);
-const dateHelper = require('./../helpers');
+const helpers = require('./../helpers');
 
 
 module.exports = {
@@ -62,7 +62,7 @@ module.exports = {
   taskDataPost: function(req, res){
     var results = [];
     console.log('in taskDataPost in taskDataController', req);
-    var date = dateHelper();
+    var date = helpers.dateHelper();
     var data = {
       date : date,
       done : req.body.done,
@@ -70,6 +70,7 @@ module.exports = {
       userId : req.body.userId,
       taskId : req.body.taskId
     };
+    console.log(data);
     //TODO figure out how to get the task id, may need to use transactions to retrieve it from tasks and then use it
     pg.connect(connectionString, function(err, client, done){
       if(err){
@@ -77,9 +78,10 @@ module.exports = {
         console.log('err connecting to db', err);
         return res.status(500).json({success : false, data : err});
       }
-      client.query('INSERT INTO taskData(date, done, otherInfo, userid, taskid) values($1, $2, $3, $4, $5);', [data.date, data.done, data.otherInfo, data.userId, data.taskId]);
+      client.query('INSERT INTO taskData(currdate, done, otherInfo, userid, taskid) values($1, $2, $3, $4, $5)ON CONFLICT(taskid, userid, currdate) DO UPDATE SET (done)=($2);', [data.date, data.done, data.otherInfo, data.userId, data.taskId]);
     })
     //TODO close connection and send back success resposne
+    var query;
   },
    taskDataPut : function(req, res){
     console.log('in taskDataPut in taskDataController')
