@@ -9,7 +9,7 @@ const todo = (state = {}, action) =>{
     case ADD_TODO:
       return {
         id: action.id,
-        text: actions.text,
+        text: action.text,
         completed: false
       }
     case TOGGLE_TODO:

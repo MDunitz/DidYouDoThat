@@ -9,6 +9,7 @@ import AddNewGoal from './components/features';
 import RequireAuth from './components/auth/require_auth';
 import GoalsList from './components/goalsList';
 import DailyReviewList from './components/dailyReviewList';
+import Todo from './components/AddTodo'
 
 export default (
    <Route path="/" component={App}>
@@ -18,6 +19,7 @@ export default (
         <Route path="feature" component={AddNewGoal} />
         <Route path="goals" component={GoalsList} />
         <Route path="dailyReview" component={DailyReviewList} />
+        <Route path="Todo" component={Todo} />
       </Route>
 );
 

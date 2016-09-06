@@ -1,5 +1,5 @@
 import { renderComponent, expect} from '../test_helper';
-import DailyReview from '../../src/components/dailyReview';
+import DailyReview from '../../src/components/dailyReviewItem';
 
 describe('dailyReview component', () => {
   let component;
