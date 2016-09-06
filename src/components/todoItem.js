@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
-//presentational comonent 
+//presentational component 
 const Todo = ({ onClick, completed, text }) => (
   <li
     onClick = {onClick}
     style = {{
       textDecoration: completed ? 'line-through' : 'none'
-    }}>
-
+    }}
+  >
     {text}
   </li>
-  )
+)
 
 Todo.PropTypes = {
   onClick : PropTypes.func.isRequired,

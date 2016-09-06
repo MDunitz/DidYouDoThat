@@ -23,3 +23,5 @@ Link.PropTypes = {
   children: PropTypes.node.isRequired,
   onCLick: PropTypes.func.isRequired
 }
+
+export default Link
