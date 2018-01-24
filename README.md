@@ -1,17 +1,17 @@
 # DidYouDoThat
 
-###Getting Started###
+### Getting Started
 - After cloning in project folder run
 ```
 	> npm install
 	> npm start
 ```
-###Run tests
+### Run tests
 ```
 >npm run test
 ```
 
-###Run tests automatically with easch file change
+### Run tests automatically with easch file change
 ```
 >npm run test:watch
 ```
