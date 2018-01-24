@@ -1,7 +1,7 @@
-#DidYouDoThat#
+# DidYouDoThat
 
 ###Getting Started###
-after cloning in project folder run
+- After cloning in project folder run
 ```
 	> npm install
 	> npm start
