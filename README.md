@@ -1,6 +1,4 @@
-# DidYouDoThat
-
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+#DidYouDoThat#
 
 ###Getting Started###
 after cloning in project folder run
